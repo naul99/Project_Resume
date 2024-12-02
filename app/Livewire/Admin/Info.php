@@ -19,7 +19,6 @@ class Info extends Component
     public $languages;
     public $interests;
     public function update(Infos $infos){
-        
        $info = Infos::find(1);
        $info->name = $this->fullname;
        $info->position = $this->position;
@@ -51,6 +50,8 @@ class Info extends Component
        
         $info->save();
        session()->flash('message', 'Cập nhật thành công.');
+       return $this->redirect(route('info'),navigate:true);
+
     }
     public function render()
     {

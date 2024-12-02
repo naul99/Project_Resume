@@ -57,6 +57,7 @@
                         <div class="widget-content">
                             <h5 class="widget-title card-title">LANGUAGES</h5>
                             <p>{{$info->languages}}</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -64,8 +65,7 @@
                     <div class="card-body">
                         <div class="widget-content">
                             <h5 class="widget-title card-title">INTERESTS</h5>
-                            <p>{{$info->interests}}</p>
-                           
+                            <p>{!!$info->interests!!}</p>
                         </div>
                     </div>
                 </div>

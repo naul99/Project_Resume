@@ -67,11 +67,11 @@
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                     </div>
                 </div>
-                <div class="col-span-full">
+                <div class="col-span-full" >
                     <label for="about" class="block text-sm/6 font-medium text-gray-900">Interests</label>
-                    <div class="mt-2">
-                        <textarea wire:model="interests" rows="3"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
+                    <div class="mt-2" wire:ignore>
+                        <textarea id="editor" wire:model.defer="interests" data-interests="@this" rows="5"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" >{!! $interests !!}</textarea>
                     </div>
                     <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
                 </div>
@@ -164,7 +164,36 @@
     </div>
     <div class="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</button>
-        <button type="submit"
+        <button id="submit" type="submit"
             class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
     </div>
 </form>
+@push('scripts')
+<script type="module">
+     import {
+        ClassicEditor,
+        Essentials,
+        Bold,
+        Italic,
+        Font,
+        Paragraph,Markdown 
+    } from 'ckeditor5';
+    ClassicEditor
+        .create(document.querySelector('#editor'),{
+            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+            ]
+        })
+        .then(editor => {
+          document.querySelector('#submit').addEventListener('click',()=>{
+            let interests = $('#editor').data('interests');
+            eval(interests).set('interests',editor.getData());
+          })
+       })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+@endpush
