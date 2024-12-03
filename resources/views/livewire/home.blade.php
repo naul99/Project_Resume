@@ -1,7 +1,7 @@
 <div>
     <section class="intro-section">
         <h2 class="section-title">Hello, {{$info->name}}</h2>
-        <p>{{$ove->description}}</p>
+        <p>{!!$ove->description!!}</p>
         <a href="#!" class="btn btn-primary btn-hire-me">HIRE ME</a>
     </section>
     <section class="resume-section">
@@ -29,7 +29,7 @@
                         <span class="badge badge-primary">{{$ex->time}}</span>
                         <h6 class="time-line-item-title">{{$ex->position}}</h6>
                         <p class="time-line-item-subtitle">{{$ex->name}}</p>
-                        <p class="time-line-item-content">{{$ex->description}}</p>
+                        <p class="time-line-item-content">{!!$ex->description!!}</p>
                     </li>
                     @endforeach
                     

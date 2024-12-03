@@ -7,6 +7,7 @@ use App\Livewire\Admin\Service;
 use App\Livewire\Blog;
 use App\Livewire\Home;
 use App\Livewire\Portfolio;
+use App\Livewire\Admin\Portfolio as Port;
 use App\Livewire\Resume;
 use App\View\Components\AdminLayout;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::prefix('admin')->group(function () {
     Route::get('overview', Overview::class)->name('ove');
     Route::get('experience', Experience::class)->name('exp');
     Route::get('service', Service::class)->name('ser');
+    Route::get('port',Port::class)->name('port');
 
 
 });

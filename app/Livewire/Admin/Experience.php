@@ -10,6 +10,10 @@ class Experience extends Component
     public $postId;
     public $isModal = false;
     public function add(){
+        $this->name="";
+        $this->time="";
+        $this->position="";
+        $this->description="";
         $this->isModal = true;
         $this->postId = false;
     }

@@ -170,30 +170,34 @@
 </form>
 @push('scripts')
 <script type="module">
-     import {
+    import {
         ClassicEditor,
         Essentials,
         Bold,
         Italic,
         Font,
-        Paragraph,Markdown 
+        Paragraph
     } from 'ckeditor5';
+
     ClassicEditor
-        .create(document.querySelector('#editor'),{
+        .create( document.querySelector( '#editor' ), {
             plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
             toolbar: [
                 'undo', 'redo', '|', 'bold', 'italic', '|',
                 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
             ]
-        })
-        .then(editor => {
-          document.querySelector('#submit').addEventListener('click',()=>{
-            let interests = $('#editor').data('interests');
-            eval(interests).set('interests',editor.getData());
-          })
-       })
-        .catch(error => {
-            console.error(error);
-        });
+        } )
+        .then( 
+            editor=>{
+                document.querySelector('#submit').addEventListener('click',()=>{
+                    let interests = $('#editor').data('interests');
+                    eval(interests).set('interests',editor.getData());
+                })
+            }
+        )
+        .catch( 
+            // console.error(error);
+         );
 </script>
+
 @endpush

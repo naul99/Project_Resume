@@ -37,29 +37,28 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Type name" required="">
                         </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="price"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Time</label>
-                            <input type="text" wire:model="time"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Time ??" required="">
-                        </div>
 
-                        <div class="col-span-2 sm:col-span-1">
+                        <div class="col-span-2">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
-                            <input type="text" wire:model="position"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Url</label>
+                            <input type="text" wire:model="url"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Position ??" required="">
                         </div>
                        
-                        <div class="col-span-2" wire:ignore>
+                        <div class="col-span-2">
                             <label for="description"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Description</label>
-                            <textarea id="editor" wire:model.defer="description" data-description="@this" rows="4"
+                            <textarea id="editor" wire:model="description" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Write description here"></textarea>
+                        </div>
+                        <div class="col-span-2" wire:ignore>
+                            <label for="description"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Image</label>
+                            <input type="file" wire:model="image">
                         </div>
                     </div>
                     <button id="submit" type="submit"
@@ -91,11 +90,11 @@
                         Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Time
+                        Url
                     </th>
                    
                     <th scope="col" class="px-6 py-3">
-                        Position
+                        Image
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -103,7 +102,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($epx as $e)
+                @foreach ($port as $e)
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="w-4 p-4">
@@ -118,10 +117,10 @@
                             {{ $e->name }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $e->time }}
+                            {{ $e->url }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $e->position }}
+                            <img src="{{ $e->image }}" alt="" height="100px" width="100px">
                         </td>
                       
                         <td class="px-6 py-4">
@@ -169,32 +168,3 @@
         </nav>
     </div>
 </div>
-@push('scripts')
-<script type="module">
-     import {
-        ClassicEditor,
-        Essentials,
-        Bold,
-        Italic,
-        Font,
-        Paragraph,Markdown 
-    } from 'ckeditor5';
-    ClassicEditor
-        .create(document.querySelector('#editor'),{
-            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
-        })
-        .then(editor => {
-          document.querySelector('#submit').addEventListener('click',()=>{
-            let description = $('#editor').data('description');
-            eval(description).set('description',editor.getData());
-          })
-       })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-@endpush

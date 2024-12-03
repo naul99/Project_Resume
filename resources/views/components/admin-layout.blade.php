@@ -14,8 +14,7 @@
                 "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.1/"
             }
         }
-    </script>
-    
+    </script>    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     @livewireStyles
@@ -47,6 +46,8 @@
                                     class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Experience</a>
                                 <a wire:navigate href="{{route('ser')}}"
                                     class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Service</a>
+                                <a wire:navigate href="{{route('port')}}"
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Portfolio</a>
                             </div>
                         </div>
                     </div>
