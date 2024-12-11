@@ -10,7 +10,7 @@ use Livewire\Component;
 use App\Models\Infos;
 class Home extends Component
 {
-    
+
     public function render()
     {
        
