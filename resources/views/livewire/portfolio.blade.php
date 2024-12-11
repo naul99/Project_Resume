@@ -1,6 +1,6 @@
 <div>
     <section class="portfolio-section">
-        <h2 class="section-title">PORTFOLIO</h2>
+        <h2 class="section-title">{{__('msg.PORTFOLIO')}}</h2>
         
         <div class="portfolio-wrapper">
             @foreach ($port as $p)

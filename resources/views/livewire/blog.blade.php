@@ -1,6 +1,6 @@
 <div>
     <section class="blog-section">
-        <h2 class="section-title">LATEST NEWS</h2>
+        <h2 class="section-title">{{__('msg.LATEST NEWS')}}</h2>
         <div class="blog-posts-wrapper">
             <article class="blog-post">
                 <a href="#!" class="blog-post-link">

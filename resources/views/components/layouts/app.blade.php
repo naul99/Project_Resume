@@ -108,13 +108,13 @@
 
         <nav class="collapsible-nav" id="collapsible-nav">
             <a wire:navigate href="{{ route('home') }}"
-                class="nav-link {{ request()->is('/') ? 'active' : '' }}">HOME</a>
+                class="nav-link {{ request()->is('/') ? 'active' : '' }}">{{__('msg.HOME')}}</a>
             <a wire:navigate href="{{ route('resume') }}"
-                class="nav-link {{ request()->is('resume') ? 'active' : '' }}">RESUME</a>
+                class="nav-link {{ request()->is('resume') ? 'active' : '' }}">{{__('msg.RESUME')}}</a>
             <a wire:navigate href="{{ route('portfolio') }}"
-                class="nav-link {{ request()->is('portfolio') ? 'active' : '' }}">PORTFOLIO</a>
+                class="nav-link {{ request()->is('portfolio') ? 'active' : '' }}">{{__('msg.PORTFOLIO')}}</a>
             <a wire:navigate href="{{ route('blog') }}"
-                class="nav-link {{ request()->is('blog') ? 'active' : '' }}">BLOG</a>
+                class="nav-link {{ request()->is('blog') ? 'active' : '' }}">{{__('msg.BLOG')}}</a>
             {{-- <a href="contact.html" class="nav-link">CONTACT</a> --}}
         </nav>
         <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
@@ -147,23 +147,23 @@
                 <a href="#!" class="social-link"><i class="fab fa-github"></i></a>
             </nav>
             <div class="widget">
-                <h5 class="widget-title">personal information</h5>
+                <h5 class="widget-title">{{__('msg.personal information')}}</h5>
                 <div class="widget-content">
-                    <p>BIRTHDAY : {{ $info->birthday }}</p>
-                    <p>WEBSITE : {{ $info->website }}</p>
-                    <p>PHONE : {{ $info->phone }}</p>
-                    <p>MAIL : {{ $info->email }}</p>
-                    <p>Location : {{ $info->location }}</p>
+                    <p>{{__('msg.BIRTHDAY')}} : {{ $info->birthday }}</p>
+                    <p>{{__('msg.WEBSITE')}} : {{ $info->website }}</p>
+                    <p>{{__('msg.PHONE')}} : {{ $info->phone }}</p>
+                    <p>{{__('msg.MAIL')}} : {{ $info->email }}</p>
+                    <p>{{__('msg.Location')}} : {{ $info->location }}</p>
                     <button onclick="location.href='{{ $info->cv }}';"
                         class="btn btn-download-cv btn-primary rounded-pill"> <img
-                            src="{{ asset('assets/images/download.svg') }}" alt="download" class="btn-img">DOWNLOAD CV
+                            src="{{ asset('assets/images/download.svg') }}" alt="download" class="btn-img">{{__('msg.DOWNLOAD CV')}}
                     </button>
                 </div>
             </div>
             <div class="widget card">
                 <div class="card-body">
                     <div class="widget-content">
-                        <h5 class="widget-title card-title">LANGUAGES</h5>
+                        <h5 class="widget-title card-title">{{__('msg.LANGUAGES')}}</h5>
                         <p>
                             @switch(Session::get('locale'))
                                 @case('vi')
@@ -181,7 +181,7 @@
             <div class="widget card">
                 <div class="card-body">
                     <div class="widget-content">
-                        <h5 class="widget-title card-title">INTERESTS</h5>
+                        <h5 class="widget-title card-title">{{__('msg.INTERESTS')}}</h5>
                         <p>
                             @switch(Session::get('locale'))
                                 @case('vi')

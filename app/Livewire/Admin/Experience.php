@@ -36,6 +36,7 @@ class Experience extends Component
         $this->isModal = true;
     }
     public function update(){
+        
         Exp::find($this->postId)->update([
             'name'=> $this->name,
             'time'=> $this->time,
@@ -51,6 +52,7 @@ class Experience extends Component
     public function render()
     {
         $epx = Exp::orderBy('id','desc')->get();
+        
         return view('livewire.admin.experience',['epx'=>$epx])->layout(\App\View\Components\AdminLayout::class);
     }
 }

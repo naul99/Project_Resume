@@ -2,8 +2,8 @@
     <section class="resume-section">
         <div class="row">
             <div class="col-lg-6">
-                <h6 class="section-subtitle">RESUME</h6>
-                <h2 class="section-title">EDUCATION</h2>
+                <h6 class="section-subtitle">{{__('msg.RESUME')}}</h6>
+                <h2 class="section-title">{{__('msg.EDUCATION')}}</h2>
                 <ul class="time-line">
                     @foreach ($edu as $e)
                     <li class="time-line-item">
@@ -16,8 +16,8 @@
                 </ul>
             </div>
             <div class="col-lg-6">
-                <h6 class="section-subtitle">RESUME</h6>
-                <h2 class="section-title">Experience</h2>
+                <h6 class="section-subtitle">{{__('msg.RESUME')}}</h6>
+                <h2 class="section-title">{{__('msg.Experience')}}</h2>
                 <ul class="time-line">
                     @foreach ($exp as $ex)
                     <li class="time-line-item">
@@ -34,8 +34,8 @@
         </div>
     </section>
     <section class="clients-section">
-        <h6 class="section-subtitle">WHAT I DO</h6>
-        <h2 class="section-title">CLIENTS</h2>
+        <h6 class="section-subtitle">{{__('msg.WHAT I DO')}}</h6>
+        <h2 class="section-title">{{__('msg.CLIENTS')}}</h2>
         <div class="client-logos-wrapper">
             <div class="client-logo"><img src="{{asset("assets/images/Clients_1.svg")}}" alt="logo" class="w-100"></div>
             <div class="client-logo"><img src="{{asset("assets/images/Clients_2.svg")}}" alt="logo" class="w-100"></div>
@@ -44,8 +44,8 @@
         </div>
     </section>
     <section class="services-section">
-        <h6 class="section-subtitle">WHAT I DO</h6>
-        <h2 class="section-title">SERVICES</h2>
+        <h6 class="section-subtitle">{{__('msg.WHAT I DO')}}</h6>
+        <h2 class="section-title">{{__('msg.SERVICES')}}</h2>
         <div class="row">
             @foreach ($ser as $se)
             <div class="media service-card col-lg-6">
@@ -63,8 +63,8 @@
         </div>
     </section>
     <section class="achievements-section">
-        <h6 class="section-subtitle">WHAT I DO</h6>
-        <h2 class="section-title">ACHIEVEMENTS</h2>
+        <h6 class="section-subtitle">{{__('msg.WHAT I DO')}}</h6>
+        <h2 class="section-title">{{__('msg.ACHIEVEMENTS')}}</h2>
         <div class="achievement-cards-wrapper">
             <div class="media achievement-card">
                 <img src="{{asset("assets/images/puzzle.svg")}}" alt="puzzle" class="achievement-card-icon">
@@ -89,7 +89,7 @@
             </div>
         </div>
     </section>
-    <section class="testimonial-section">
+    {{-- <section class="testimonial-section">
         <div id="testimonialCarousel" class="testimonial-carousel carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -117,5 +117,5 @@
                 <li data-target="#testimonialCarousel" data-slide-to="2"></li>
             </ol>
         </div>
-    </section>
+    </section> --}}
 </div>
