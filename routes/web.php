@@ -13,10 +13,15 @@ use App\View\Components\AdminLayout;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Info;
 
-Route::get("/",Home::class);
+Route::get("/",Home::class)->name('home');
 Route::get('resume',Resume::class)->name('resume');
 Route::get('portfolio',Portfolio::class)->name('portfolio');
 Route::get('blog',Blog::class)->name('blog');
+
+Route::get("/language/{locale}",function($locale){
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
 
 Route::prefix('admin')->group(function () {
     Route::get('info', Info::class)->name('info');

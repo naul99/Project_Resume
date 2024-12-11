@@ -13,9 +13,12 @@ class Home extends Component
     
     public function render()
     {
-        $info = Infos::find(1);
+       
+        $lang = session()->get('locale','en') == 'vi'?'vi':'en';
+        $info = Infos::select('name','position_'.$lang,'birthday','website','phone','email','location','languages_'.$lang,'photo','cv','interests_'.$lang)->find(1);
+        
         $edu = Education::get();
-        $ove = overview::find(1);
+        $ove = overview::select('description_'.$lang)->find(1);
         $exp = Experience::get();
         $ser = Service::get();
         return view('livewire.home',
@@ -26,5 +29,8 @@ class Home extends Component
             'exp'=>$exp,
             'ser'=>$ser
         ])->layoutData(['info'=>$info]);
+        
+      
+       
     }
 }

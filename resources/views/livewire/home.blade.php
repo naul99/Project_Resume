@@ -1,8 +1,17 @@
 <div>
     <section class="intro-section">
         <h2 class="section-title">Hello, {{$info->name}}</h2>
-        <p>{!!$ove->description!!}</p>
-        <a href="#!" class="btn btn-primary btn-hire-me">HIRE ME</a>
+        <p>
+            @switch(Session::get('locale'))
+            @case('vi')
+                {!! $ove->description_vi !!}
+            @break
+
+            @default
+                {!! $ove->description_en !!}
+        @endswitch
+        </p>
+        {{-- <a href="#!" class="btn btn-primary btn-hire-me">HIRE ME</a> --}}
     </section>
     <section class="resume-section">
         <div class="row">
@@ -44,7 +53,7 @@
             @foreach ($ser as $se)
             <div class="media service-card col-lg-6">
                 <div class="service-icon">
-                    <img src="assets/images/001-target.svg" alt="target">
+                    <img src="{{asset("assets/images/001-target.svg")}}" alt="target">
                 </div>
                 <div class="media-body">
                     <h5 class="service-title">{{$se->name}}</h5>
@@ -60,19 +69,19 @@
                 <div class="carousel-item active">
                     <p class="testimonial-content">Mauris magna sapien, pharetra consectetur fringilla vitae,
                         interdum sed tortor.</p>
-                    <img src="assets/images/Profile.png" alt="profile" class="testimonial-img">
+                    <img src="{{asset("assets/images/Profile.png")}}" alt="profile" class="testimonial-img">
                     <p class="testimonial-name">Nout Golstein</p>
                 </div>
                 <div class="carousel-item">
                     <p class="testimonial-content">Mauris magna sapien, pharetra consectetur fringilla vitae,
                         interdum sed tortor.</p>
-                    <img src="assets/images/Profile.png" alt="profile" class="testimonial-img">
+                    <img src="{{asset("assets/images/Profile.png")}}" alt="profile" class="testimonial-img">
                     <p class="testimonial-name">Nout Golstein</p>
                 </div>
                 <div class="carousel-item">
                     <p class="testimonial-content">Mauris magna sapien, pharetra consectetur fringilla vitae,
                         interdum sed tortor.</p>
-                    <img src="assets/images/Profile.png" alt="profile" class="testimonial-img">
+                    <img src="{{asset("assets/images/Profile.png")}}" alt="profile" class="testimonial-img">
                     <p class="testimonial-name">Nout Golstein</p>
                 </div>
             </div>

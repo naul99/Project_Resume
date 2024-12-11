@@ -18,10 +18,18 @@
         <div class="border-b border-gray-900/10 pb-12">
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="col-span-full">
-                    <label for="about" class="block text-sm/6 font-medium text-gray-900">Interests</label>
+                    <label for="about" class="block text-sm/6 font-medium text-gray-900">Description_En</label>
                     <div class="mt-2" wire:ignore>
-                        <textarea id="editor" wire:model="description" data-description="@this" rows="6"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">{!!$description!!}</textarea>
+                        <textarea id="editor" wire:model="description_en" data-description_en="@this" rows="6"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">{!!$description_en!!}</textarea>
+                    </div>
+                    <p class="mt-3 text-sm/6 text-gray-600">Write a few description about yourself.</p>
+                </div>
+                <div class="col-span-full">
+                    <label for="about" class="block text-sm/6 font-medium text-gray-900">Description_Vi</label>
+                    <div class="mt-2" wire:ignore>
+                        <textarea id="editor1" wire:model="description_vi" data-description_vi="@this" rows="6"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">{!!$description_vi!!}</textarea>
                     </div>
                     <p class="mt-3 text-sm/6 text-gray-600">Write a few description about yourself.</p>
                 </div>
@@ -36,30 +44,36 @@
 </form>
 @push('scripts')
 <script type="module">
-     import {
+    import {
         ClassicEditor,
         Essentials,
         Bold,
         Italic,
         Font,
-        Paragraph,Markdown 
+        Paragraph
     } from 'ckeditor5';
-    ClassicEditor
-        .create(document.querySelector('#editor'),{
-            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
-        })
-        .then(editor => {
-          document.querySelector('#submit').addEventListener('click',()=>{
-            let description = $('#editor').data('description');
-            eval(description).set('description',editor.getData());
-          })
-       })
-        .catch(error => {
-            console.error(error);
-        });
+    function initializeEditor(editorSelector, dataSelector, dataProperty) {
+        ClassicEditor
+            .create(document.querySelector(editorSelector), {
+                plugins: [Essentials, Bold, Italic, Font, Paragraph],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                ]
+            })
+            .then(editor => {
+                document.querySelector('#submit').addEventListener('click', () => {
+                    let data = $(editorSelector).data(dataSelector);
+                    if (data) {
+                        eval(data).set(dataProperty, editor.getData());
+                    }
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+    initializeEditor('#editor', 'description_en', 'description_en');
+    initializeEditor('#editor1', 'description_vi', 'description_vi');
 </script>
 @endpush

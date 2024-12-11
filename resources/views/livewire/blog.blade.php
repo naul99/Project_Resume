@@ -4,7 +4,7 @@
         <div class="blog-posts-wrapper">
             <article class="blog-post">
                 <a href="#!" class="blog-post-link">
-                    <img src="assets/images/News_1.jpg" alt="news 1" class="blog-post-thumbnail">
+                    <img src="{{asset("assets/images/News_1.jpg")}}" alt="news 1" class="blog-post-thumbnail">
                     <h5 class="blog-post-title">Design Conferences in 2019</h5>
 
                 </a>

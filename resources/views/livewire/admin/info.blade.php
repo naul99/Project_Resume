@@ -30,9 +30,16 @@
                     </div>
                 </div>
                 <div class="sm:col-span-2 sm:col-start-1">
-                    <label for="city" class="block text-sm/6 font-medium text-gray-900">Position</label>
+                    <label for="city" class="block text-sm/6 font-medium text-gray-900">Position_En</label>
                     <div class="mt-2">
-                        <input wire:model="position" type="text"autocomplete="address-level2"
+                        <input wire:model="position_en" type="text" autocomplete="address-level2"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                    </div>
+                </div>
+                <div class="sm:col-span-2 sm:col-start-1">
+                    <label for="city" class="block text-sm/6 font-medium text-gray-900">Position_Vi</label>
+                    <div class="mt-2">
+                        <input wire:model="position_vi" type="text"autocomplete="address-level2"
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                     </div>
                 </div>
@@ -70,8 +77,16 @@
                 <div class="col-span-full" >
                     <label for="about" class="block text-sm/6 font-medium text-gray-900">Interests</label>
                     <div class="mt-2" wire:ignore>
-                        <textarea id="editor" wire:model.defer="interests" data-interests="@this" rows="5"
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" >{!! $interests !!}</textarea>
+                        <textarea id="editor" wire:model.defer="interests_en" data-interests_en="@this" rows="5"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" >{!! $interests_en !!}</textarea>
+                    </div>
+                    <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
+                </div>
+                <div class="col-span-full" >
+                    <label for="about" class="block text-sm/6 font-medium text-gray-900">Interests_Vi</label>
+                    <div class="mt-2" wire:ignore>
+                        <textarea id="editor1" wire:model.defer="interests_vi" data-interests_vi="@this" rows="5"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" >{!!$interests_vi!!}</textarea>
                     </div>
                     <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
                 </div>
@@ -90,12 +105,23 @@
                     </div>
                 </div>
                 <div class="sm:col-span-4">
-                    <label for="username" class="block text-sm/6 font-medium text-gray-900">Languages</label>
+                    <label for="username" class="block text-sm/6 font-medium text-gray-900">Languages_En</label>
                     <div class="mt-2">
                         <div
                             class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
 
-                            <input wire:model="languages" type="text" autocomplete="given-name"
+                            <input wire:model="languages_en" type="text" autocomplete="given-name"
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:col-span-4">
+                    <label for="username" class="block text-sm/6 font-medium text-gray-900">Languages_Vi</label>
+                    <div class="mt-2">
+                        <div
+                            class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+
+                            <input wire:model="languages_vi" type="text" autocomplete="given-name"
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                         </div>
                     </div>
@@ -178,26 +204,29 @@
         Font,
         Paragraph
     } from 'ckeditor5';
-
-    ClassicEditor
-        .create( document.querySelector( '#editor' ), {
-            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
-        } )
-        .then( 
-            editor=>{
-                document.querySelector('#submit').addEventListener('click',()=>{
-                    let interests = $('#editor').data('interests');
-                    eval(interests).set('interests',editor.getData());
-                })
-            }
-        )
-        .catch( 
-            // console.error(error);
-         );
+    function initializeEditor(editorSelector, dataSelector, dataProperty) {
+        ClassicEditor
+            .create(document.querySelector(editorSelector), {
+                plugins: [Essentials, Bold, Italic, Font, Paragraph],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                ]
+            })
+            .then(editor => {
+                document.querySelector('#submit').addEventListener('click', () => {
+                    let data = $(editorSelector).data(dataSelector);
+                    if (data) {
+                        eval(data).set(dataProperty, editor.getData());
+                    }
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+    initializeEditor('#editor', 'interests_en', 'interests_en');
+    initializeEditor('#editor1', 'interests_vi', 'interests_vi');
 </script>
 
 @endpush
