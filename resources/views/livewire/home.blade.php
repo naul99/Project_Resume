@@ -1,7 +1,7 @@
 <div>
     <section class="intro-section">
         <h2 class="section-title">{{__('msg.Hello')}}, {{$info->name}}</h2>
-        <p>
+       
             @switch(Session::get('locale'))
             @case('vi')
                 {!! $ove->description_vi !!}
@@ -9,8 +9,8 @@
 
             @default
                 {!! $ove->description_en !!}
-        @endswitch
-        </p>
+            @endswitch
+        
         {{-- <a href="#!" class="btn btn-primary btn-hire-me">HIRE ME</a> --}}
     </section>
     <section class="resume-section">

@@ -198,7 +198,7 @@
         </aside>
         <main>
             {{ $slot }}
-            <footer>LiveWire 3 @ <a href="javascript:void(0);" rel="noopener noreferrer"></a>. All Rights Reserved
+            <footer>Admin<a href="javascript:void(0);" rel="noopener noreferrer"></a>. All Rights Reserved
                 {{ now()->format('Y') }}</footer>
         </main>
     </div>
