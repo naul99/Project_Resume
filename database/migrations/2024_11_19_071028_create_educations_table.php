@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('time');
             $table->string('major');
             $table->float('gpa');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }

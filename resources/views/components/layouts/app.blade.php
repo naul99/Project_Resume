@@ -144,7 +144,7 @@
                 <a href="#!" class="social-link"><i class="fab fa-twitter"></i></a>
                 <a href="#!" class="social-link"><i class="fab fa-behance"></i></a>
                 <a href="#!" class="social-link"><i class="fab fa-dribbble"></i></a>
-                <a href="#!" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/naul99" class="social-link"><i class="fab fa-github"></i></a>
             </nav>
             <div class="widget">
                 <h5 class="widget-title">{{__('msg.personal information')}}</h5>
